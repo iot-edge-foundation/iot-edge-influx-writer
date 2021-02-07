@@ -4,7 +4,7 @@ Example on how to write telemetry to an InfluxDB using Azure IoT Edge
 
 ## Introduction
 
-This Aure IoT Edge module demonstrates hoe to write telemetry to a local InfluxDB database.
+This Azure IoT Edge module demonstrates how to write routed telemetry to a local InfluxDB database.
 
 Keep in mind you have to create the database yourself.
 
@@ -29,4 +29,4 @@ An example of the desired properties is:
 
 ## License
 
-This library is available under MIT license
+This library is available under MIT license.
