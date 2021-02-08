@@ -22,6 +22,11 @@ namespace InfluxWriterModule
 
         static Dictionary<string,string> Tags;
 
+        private static string _moduleId; 
+
+        private static string _deviceId;
+
+
         static void Main(string[] args)
         {
             Init().Wait();
@@ -42,6 +47,22 @@ namespace InfluxWriterModule
 
         static async Task Init()
         {
+            _deviceId = System.Environment.GetEnvironmentVariable("IOTEDGE_DEVICEID");
+            _moduleId = Environment.GetEnvironmentVariable("IOTEDGE_MODULEID");
+
+            Console.WriteLine(" ");
+            Console.WriteLine("  _       _                  _                   _        __ _                                 _ _            ");
+            Console.WriteLine(" (_)     | |                | |                 (_)      / _| |                               (_) |           ");
+            Console.WriteLine("  _  ___ | |_ ______ ___  __| | __ _  ___ ______ _ _ __ | |_| |_   ___  __________      ___ __ _| |_ ___ _ __ ");
+            Console.WriteLine(" | |/ _ \\| __|______/ _ \\/ _` |/ _` |/ _ \\______| | '_ \\|  _| | | | \\ \\/ /______\\ \\ /\\ / / '__| | __/ _ \\ '__|");
+            Console.WriteLine(" | | (_) | |_      |  __/ (_| | (_| |  __/      | | | | | | | | |_| |>  <        \\ V  V /| |  | | ||  __/ |   ");
+            Console.WriteLine(" |_|\\___/ \\__|      \\___|\\__,_|\\__, |\\___|      |_|_| |_|_| |_|\\__,_/_/\\_\\        \\_/\\_/ |_|  |_|\\__\\___|_|   ");
+            Console.WriteLine("                                __/ |                                                                         ");
+            Console.WriteLine("                               |___/                                                                          ");
+            Console.WriteLine(" ");
+            Console.WriteLine("   Copyright © 2021 - IoT Edge Foundation");
+            Console.WriteLine(" ");
+
             MqttTransportSettings mqttSetting = new MqttTransportSettings(TransportType.Mqtt_Tcp_Only);
             ITransportSettings[] settings = { mqttSetting };
 
@@ -56,7 +77,8 @@ namespace InfluxWriterModule
 
 
             await ioTHubModuleClient.OpenAsync();
-            Console.WriteLine("IoT Hub module client initialized.");
+
+            Console.WriteLine($"Module '{_deviceId}'-'{_moduleId}' initialized.");
 
             Metrics.Collector = new CollectorConfiguration()
                             .Batch.AtInterval(TimeSpan.FromSeconds(2))
