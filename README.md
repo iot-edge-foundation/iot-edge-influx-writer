@@ -1,12 +1,24 @@
 # iot-edge-influx-writer
 
-Example on how to write telemetry to an InfluxDB using Azure IoT Edge
+Example on how to write telemetry to an InfluxDB using Azure IoT Edge.
 
 ## Introduction
 
 This Azure IoT Edge module demonstrates how to write routed telemetry to a local InfluxDB database.
 
 Keep in mind you have to create the database yourself.
+
+This module is written with InfluxDB 1.8 in mind.
+
+## How to use
+
+This module is a demonstration of how to ingest the Ambiant Temperature of the the [Microsoft Simulated Temperature module](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-iot.simulated-temperature-sensor?tab=overview)
+
+Connect to it with an IoT Edge route:
+
+```
+FROM /messages/modules/sim/outputs/temperatureOutput INTO BrokeredEndpoint("/modules/writer/inputs/input1")
+```
 
 ## Desired properties
 
