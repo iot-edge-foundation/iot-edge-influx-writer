@@ -1,6 +1,6 @@
 # iot-edge-influx-writer
 
-Example on how to write telemetry to an InfluxDB using Azure IoT Edge.
+Example on how to write telemetry to an InfluxDB 1 using Azure IoT Edge.
 
 ## Introduction
 
@@ -8,7 +8,7 @@ This Azure IoT Edge module demonstrates how to write routed telemetry to a local
 
 Keep in mind you have to create the database yourself.
 
-This module is written with InfluxDB 1.8 in mind.
+This module is written with InfluxDB 1.8 in mind. InfluxDB 2.0 has some fundamental changes so it needs fundamental rework.
 
 ## How to use
 
